@@ -1,0 +1,169 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f7faff;
+    color: #003049;
+}
+
+.calendar-frame {
+    width: 100%;
+    height: 90vh;
+    border: 0;
+}
+
+@media (min-width: 900px) {
+    .calendar-frame {
+        height: 1200px;
+    }
+}
+header {
+    background: #003049;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a.active {
+    color: #ffdd57; /* gold highlight */
+    text-decoration: underline;
+}
+
+.hero {
+    background: 
+        linear-gradient(rgba(255,255,255,0.25), rgba(255,255,255,0.25)),
+        url('images/hero.jpg') center/cover no-repeat;
+    padding: 120px 20px;
+    text-align: center;
+    color: white;
+}
+
+.hero h2,
+.hero p {
+    color: white;
+    font-weight: 800;
+    text-shadow: 0 0 14px rgba(0,0,0,0.85);
+}
+
+/* Fade-in animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1.2s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.button {
+    display: inline-block;
+    background: #0077b6;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+.book-now-btn {
+    background-color: #0077cc;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-left: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.book-now-btn:hover {
+    background-color: #005fa3;
+}
+
+.intro {
+    padding: 30px;
+    text-align: center;
+}
+
+footer {
+    background: #003049;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 40px;
+}
+
+/* Prices Page */
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td {
+    border: 1px solid #003049;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background: #003049;
+    color: white;
+}
+
+.prices-table {
+    text-align: center;
+    padding: 20px;
+}
+
+.note {
+    margin-top: 20px;
+    font-style: italic;
+}
+
+/* Contact Page */
+.contact-section {
+    width: 80%;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input, textarea {
+    padding: 10px;
+    border: 1px solid #003049;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    background: #0077b6;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
