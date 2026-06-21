@@ -1,208 +1,148 @@
+/* ------------------------------
+   GLOBAL STYLES
+------------------------------ */
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #f7faff;
-    color: #003049;
+    background: #f4f4f4;
+    color: #333;
 }
 
-.calendar-frame {
-    width: 100%;
-    height: 90vh;
-    border: 0;
-}
-
-@media (min-width: 900px) {
-    .calendar-frame {
-        height: 1200px;
-    }
-}
 header {
-    background: #003049;
+    background: #0077b6;
     color: white;
-    padding: 15px;
+    padding: 20px;
     text-align: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+}
+
+nav {
+    background: #023e8a;
+    padding: 10px;
+    text-align: center;
 }
 
 nav a {
     color: white;
-    margin: 0 10px;
+    margin: 0 15px;
     text-decoration: none;
     font-weight: bold;
 }
 
-nav a.active {
-    color: #ffdd57; /* gold highlight */
+nav a:hover {
     text-decoration: underline;
 }
 
+section {
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+h1, h2 {
+    color: #023e8a;
+}
+
+/* ------------------------------
+   HERO IMAGE
+------------------------------ */
+
 .hero {
-    background: 
-        linear-gradient(rgba(255,255,255,0.25), rgba(255,255,255,0.25)),
-        url('images/hero.jpg') center/cover no-repeat;
-    padding: 120px 20px;
-    text-align: center;
-    color: white;
+    width: 100%;
+    height: 60vh;
+    background-size: cover;
+    background-position: center;
+    border-bottom: 4px solid #0077b6;
 }
 
-.hero h2,
-.hero p {
-    color: white;
-    font-weight: 800;
-    text-shadow: 0 0 14px rgba(0,0,0,0.85);
+/* ------------------------------
+   HOMEPAGE SLIDESHOW GALLERY
+------------------------------ */
+
+.gallery {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
 }
 
-/* Fade-in animation */
-.fade-in {
+.gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
     opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1.2s ease-out forwards;
+    transition: opacity 1s ease-in-out;
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.gallery img.active {
+    opacity: 1;
 }
 
-.button {
-    display: inline-block;
-    background: #0077b6;
+.gallery .prev,
+.gallery .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
     color: white;
-    padding: 12px 20px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
     border-radius: 5px;
-    text-decoration: none;
-    margin-top: 10px;
-}
-.book-now-btn {
-    background-color: #0077cc;
-    color: white;
-    padding: 8px 16px;
-    border-radius: 4px;
-    margin-left: 10px;
-    text-decoration: none;
-    font-weight: bold;
 }
 
-.book-now-btn:hover {
-    background-color: #005fa3;
-}
+.gallery .prev { left: 20px; }
+.gallery .next { right: 20px; }
 
-.intro {
-    padding: 30px;
+.gallery .dots {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
     text-align: center;
 }
+
+.gallery .dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background: white;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.gallery .dot.active {
+    opacity: 1;
+}
+
+/* ------------------------------
+   CARAVAN PHOTO GRID (IMPORTANT)
+------------------------------ */
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    padding: 10px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+/* ------------------------------
+   FOOTER
+------------------------------ */
 
 footer {
-    background: #003049;
+    background: #023e8a;
     color: white;
     text-align: center;
-    padding: 10px;
+    padding: 15px;
     margin-top: 40px;
-}
-
-/* Prices Page */
-table {
-    width: 80%;
-    margin: 20px auto;
-    border-collapse: collapse;
-    background: white;
-}
-
-th, td {
-    border: 1px solid #003049;
-    padding: 10px;
-    text-align: center;
-}
-
-th {
-    background: #003049;
-    color: white;
-}
-
-.prices-table {
-    text-align: center;
-    padding: 20px;
-}
-
-.note {
-    margin-top: 20px;
-    font-style: italic;
-}
-
-/* Contact Page */
-.contact-section {
-    width: 80%;
-    margin: 20px auto;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-input, textarea {
-    padding: 10px;
-    border: 1px solid #003049;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-button {
-    background: #0077b6;
-    color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
-    padding: 10px;
-}
-
-.gallery img {
-    width: 100%;
-    height: auto;
-    border-radius: 6px;
-    object-fit: cover;
-}
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
-    padding: 10px;
-}
-
-.gallery img {
-    width: 100%;
-    height: auto;
-    border-radius: 6px;
-    object-fit: cover;
-}
-/* Caravan photo grid */
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
-    padding: 10px;
-}
-
-.gallery img {
-    width: 100%;
-    height: auto;
-    border-radius: 6px;
-    object-fit: cover;
 }
