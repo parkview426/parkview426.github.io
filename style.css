@@ -1,18 +1,32 @@
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
+  font-family: Arial, sans-serif;
   background: #f5f5f5;
+}
+
+.nav {
+  background: #333;
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav a {
+  color: #fff;
+  margin-left: 15px;
+  text-decoration: none;
 }
 
 .hero {
   position: relative;
   text-align: center;
-  color: white;
 }
 
-.hero-image {
+.hero img {
   width: 100%;
-  max-height: 400px;
+  height: 350px;
   object-fit: cover;
   filter: brightness(0.6);
 }
@@ -22,32 +36,41 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  color: white;
 }
 
 .btn {
-  display: inline-block;
-  padding: 10px 20px;
   background: #ff9800;
   color: #fff;
+  padding: 10px 20px;
   text-decoration: none;
   border-radius: 4px;
 }
 
 main {
+  background: #fff;
   padding: 20px;
   max-width: 900px;
-  margin: 0 auto;
-  background: #fff;
+  margin: 20px auto;
 }
 
-section {
-  margin-bottom: 30px;
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
 }
 
-footer {
-  text-align: center;
+.gallery-grid img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.prices {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.prices th, .prices td {
+  border: 1px solid #ccc;
   padding: 10px;
-  background: #333;
-  color: #fff;
 }
-
