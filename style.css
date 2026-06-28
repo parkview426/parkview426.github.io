@@ -21,6 +21,10 @@ body {
   margin-left: 15px;
   text-decoration: none;
 }
+nav a.active {
+  color: #ffdd00; /* bright yellow */
+  font-weight: bold;
+}
 
 .hero {
   position: relative;
