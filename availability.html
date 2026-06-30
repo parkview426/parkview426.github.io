@@ -2,29 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Check the availability and book your stay at Park View Caravan">
   <title>Availability – Park View Caravan</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="nav">
-  <h1>Availability</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="gallery.html">Gallery</a>
-     <a href="availability.html" class="active">Availability</a>
-    <a href="book.html">Book Now</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+<header>
+  <div class="nav-container">
+    <h1>Availability</h1>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="availability.html" class="active">Availability</a>
+      <a href="book.html">Book Now</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
 </header>
 
 <main>
   <h2>Availability Calendar</h2>
 
   <div class="availability-widget">
+    <p>Loading availability calendar...</p>
     <script src="https://widgets.bookalet.co.uk/publish.js"
       data-bookalet="5190e2d6-0731-4b08-9a49-90deb558c269"
-      data-property="58669">
+      data-property="58669"
+      async>
     </script>
   </div>
 </main>
