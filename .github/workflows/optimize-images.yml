@@ -1,0 +1,74 @@
+name: Optimize images
+
+on:
+  workflow_dispatch:
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Install image tools
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y jpegoptim imagemagick libjpeg-progs
+
+      - name: Backup original images
+        run: |
+          set -euo pipefail
+          mkdir -p images/originals
+          git ls-files -z | xargs -0 -n1 | grep -Ei '\.(jpe?g)$' | while IFS= read -r file; do
+            echo "Backing up: $file"
+            cp -- "$file" "images/originals/$(basename "$file")"
+          done || true
+          git add images/originals || true
+          if ! git diff --staged --quiet; then
+            git commit -m "chore(images): backup originals to images/originals" || true
+            git push origin HEAD || true
+          else
+            echo "No new backups to commit"
+          fi
+
+      - name: Find and optimize JPEGs (resize + recompress)
+        env:
+          MAX_WIDTH: 1600
+          QUALITY: 75
+        run: |
+          set -euo pipefail
+          while IFS= read -r file; do
+            echo "Processing: $file"
+            width=$(identify -format "%w" "$file" || echo 0)
+            if [ "$width" -gt "$MAX_WIDTH" ]; then
+              mogrify -resize "${MAX_WIDTH}x" "$file"
+            fi
+            jpegoptim --strip-all --max=$QUALITY --all-progressive "$file" || true
+          done < <(find . -type f \( -iname "*.jpg" -o -iname "*.jpeg" \) -not -path "./.git/*")
+
+      - name: Show size diff
+        run: |
+          echo "Modified JPEGs:"
+          git --no-pager diff --name-only --diff-filter=M | grep -Ei '\.jpe?g$' || true
+          for f in $(git --no-pager diff --name-only --diff-filter=M | grep -Ei '\.jpe?g$' || true); do
+            if [ -n "$f" ]; then
+              old_size=$(git show HEAD:"$f" | wc -c || echo 0)
+              new_size=$(wc -c < "$f" || echo 0)
+              echo "$f: ${old_size} bytes (old) -> ${new_size} bytes (new)"
+            fi
+          done || true
+
+      - name: Commit optimized images
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if ! git diff --staged --quiet; then
+            git commit -m "chore(images): optimize and resize images (max-width=1600, quality=75)"
+            git push origin HEAD
+          else
+            echo "No changes to commit."
+          fi
