@@ -201,7 +201,6 @@ function updateSummary() {
     summaryRate.textContent = activeRate ? formatRate(activeRate) : 'Rate not available yet';
     summaryTotal.textContent = '';
     bookNowLink.classList.add('disabled');
-    bookNowLink.href = '#';
     summaryMessage.textContent = 'Choose a second available date to see the total price and book.';
     clearButton.classList.remove('hidden');
     return;
@@ -231,7 +230,6 @@ clearButton.addEventListener('click', () => {
   summaryRate.textContent = '';
   summaryTotal.textContent = '';
   bookNowLink.classList.add('disabled');
-  bookNowLink.href = '#';
   summaryPanel.classList.remove('visible');
   clearButton.classList.add('hidden');
   renderCalendars();
