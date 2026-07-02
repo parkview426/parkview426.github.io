@@ -275,6 +275,32 @@ main {
   .calendar-cell {
     min-height: 48px;
   }
+.calendar-legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+}
+
+.legend-box {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  border-radius: 3px;
+}
+
+/* Colours */
+.legend-available {
+  background-color: #4CAF50; /* green */
+}
+
+.legend-unavailable {
+  background-color: #D32F2F; /* red */
+}
+
+.legend-selected {
+  background-color: #1976D2; /* blue */
+}
 
   .calendar-legend {
     justify-content: flex-start;
