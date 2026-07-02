@@ -215,7 +215,7 @@ function updateSummary() {
   summaryMessage.textContent = '';
   bookNowLink.classList.remove('disabled');
   const mailSubject = encodeURIComponent(`Booking request from ${formatDate(selectedStart)} to ${formatDate(selectedEnd)}`);
-  const mailBody = encodeURIComponent(`Hello,%0D%0A%0D%0AI would like to book from ${formatDate(selectedStart)} to ${formatDate(selectedEnd)} (${nights} nights) at £${totalPrice}.%0D%0A%0D%0AThank you.`);
+  const mailBody = encodeURIComponent(`Hello,\n\nI would like to book from ${formatDate(selectedStart)} to ${formatDate(selectedEnd)} (${nights} nights) at £${totalPrice}.\n\nThank you.`);
   bookNowLink.href = `mailto:parkviewhru426@gmail.com?subject=${mailSubject}&body=${mailBody}`;
   clearButton.classList.remove('hidden');
 }
