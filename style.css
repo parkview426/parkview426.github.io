@@ -292,6 +292,8 @@ main {
 /* Colours */
 .legend-available {
   background-color: #4CAF50; /* green */
+  background-color: #003366;
+
 }
 
 .legend-unavailable {
